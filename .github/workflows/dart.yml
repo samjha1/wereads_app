@@ -13,11 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Set up Flutter SDK
+      # Set up Flutter SDK (ensure correct version for Dart 3.x)
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.7.0'  # Specify the desired Flutter version
+          flutter-version: '3.7.0'  # Make sure this is the correct Flutter version
+
+      # Clear the Flutter cache to ensure the right version of Dart is being used
+      - name: Clean Flutter cache
+        run: flutter clean
 
       # Install dependencies
       - name: Install dependencies
