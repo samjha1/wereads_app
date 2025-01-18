@@ -24,7 +24,7 @@ class _SkillScreenState extends State<fetchdairy_records> {
   // Function to fetch data from the backend
   Future<List<dynamic>> fetchData() async {
     final response = await http
-        .get(Uri.parse('http://api.indataai.in/wereads/fetch_dairy.php'));
+        .get(Uri.parse('http:// /wereads/fetch_dairy.php'));
 
     if (response.statusCode == 200) {
       // If the server returns a successful response, parse the JSON data
