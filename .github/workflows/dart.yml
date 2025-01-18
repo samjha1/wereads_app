@@ -22,7 +22,6 @@ jobs:
       # Clear Flutter cache to ensure the right version of Dart is used
       - name: Clean Flutter cache
         run: |
-          flutter doctor
           flutter clean
           flutter pub get
 
