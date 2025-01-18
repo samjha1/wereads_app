@@ -1,0 +1,38 @@
+name: Flutter
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Set up Flutter SDK
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.0'  # Ensure correct Flutter version with Dart 3.x
+
+      # Clear Flutter cache to ensure the right version of Dart is used
+      - name: Clean Flutter cache
+        run: |
+          flutter clean
+          flutter pub get
+
+      # Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Analyze project source
+      - name: Analyze project source
+        run: flutter analyze
+
+      # Run tests (for Flutter projects, use flutter test)
+      - name: Run tests
+        run: flutter test
